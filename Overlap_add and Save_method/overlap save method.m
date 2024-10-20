@@ -31,5 +31,5 @@ function y = mycirconv1(x, h)
     y = ifft(fft(x) .* fft(h, N)); % FFT-based circular convolution
 end
 disp(p);
-
+%for verification 
 disp(cconv(x,h))
