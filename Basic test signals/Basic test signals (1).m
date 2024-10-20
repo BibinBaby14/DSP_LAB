@@ -112,3 +112,4 @@ xlabel('Time Index');
 ylabel('Amplitude');
 title('Exponential Signal');
 legend('Continuous', 'Discrete');
+%simulation of basic test signsls done;
