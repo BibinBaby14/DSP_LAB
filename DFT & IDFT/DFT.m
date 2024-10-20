@@ -14,4 +14,3 @@ end
 disp(round(X));
 %using inbuilt function
 disp(fft(x));
-
