@@ -51,3 +51,8 @@ where A is the initial amplitude and alpha is the rate of growth or decay:
 If alpha > 0, the signal grows exponentially.
 If alpha < 0, the signal decays exponentially.
 Exponential signals are used in modeling systems with natural growth or decay, such as charging and discharging in capacitors or population growth models.
+
+# OBSERVATION
+![image](https://github.com/user-attachments/assets/bf8ba537-660a-4e82-957e-99c1d82471f7)
+
+![Picture1](https://github.com/user-attachments/assets/924740c0-f160-4ae1-be35-81b857c316f9)
