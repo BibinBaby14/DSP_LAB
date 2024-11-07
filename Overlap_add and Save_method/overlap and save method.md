@@ -1,4 +1,4 @@
-OVERLAP ADD AND OVERLAP SAVE METHOD
+* EXPERIMENT 10 : OVERLAP ADD AND OVERLAP SAVE METHOD *
 
 Aim
 To simulate linear convolution of two signals using overlap add and overlap save methods
