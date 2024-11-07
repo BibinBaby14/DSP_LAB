@@ -38,3 +38,5 @@ MRI: Magnetic Resonance Imaging scans acquire data by sampling the magnetic fiel
 CT Scans: Computed Tomography scans use X-rays to create cross-sectional images of the body. The sampling rate of the X-ray detector affects the image quality and resolution.
 5. Control Systems
 Data Acquisition: Control systems often require sampling of physical processes (like temperature, pressure, or position) to monitor and control them. The sampling rate must be fast enough to capture the relevant dynamics of the system.
+**OBSERVATION**
+
