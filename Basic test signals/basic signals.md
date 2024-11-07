@@ -55,4 +55,3 @@ Exponential signals are used in modeling systems with natural growth or decay, s
 # OBSERVATION
 ![image](https://github.com/user-attachments/assets/bf8ba537-660a-4e82-957e-99c1d82471f7)
 
-![Picture1](https://github.com/user-attachments/assets/924740c0-f160-4ae1-be35-81b857c316f9)
