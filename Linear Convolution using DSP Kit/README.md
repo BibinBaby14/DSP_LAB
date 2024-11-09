@@ -6,11 +6,10 @@ Linear convolution is a fundamental operation in digital signal processing (DSP)
 
 ## Linear Convolution Concept
 
-Given two discrete-time signals, \( x[n] \) and \( h[n] \), the **linear convolution** \( y[n] \) is defined as:
+Given two discrete-time signals, \( x[n] \) and \( h[n] \), the **linear convolution** is defined as:
+![image](https://github.com/user-attachments/assets/80a8ba8b-6ab6-492b-8efe-2c1e3399576f)
 
-\[
-y[n] = \sum_{k=0}^{N-1} x[k] \cdot h[n - k]
-\]
+
 
 Where:
 - \( x[n] \) is the **input signal**.
