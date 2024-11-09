@@ -91,3 +91,4 @@ Audio Processing: For noise reduction, equalization, and effects.
 Image Processing: In tasks such as edge detection, blurring, and filtering.
 Communications: For channel modeling and equalization.
 Control Systems: To analyze the system’s response to input signals.
+
