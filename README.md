@@ -21,7 +21,7 @@ Bibin Baby
 
 7.Properties of DFT
 
-8.Linear convolution using Overlap Add and Save methods
+8. Overlap Add and Save method
 
 9.Implementation of FIR Filter
 
