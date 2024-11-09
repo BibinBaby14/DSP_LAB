@@ -1,5 +1,5 @@
 **1.Simulation of Basic Test Signals**		
-**2.Verification of Sampling Theorem**		
+**2.Verification of Sampling Theorem**
 **3.Linear Convolution**		
 **4.Circular Convolution**		
 **5.Linear Convolution using circular convolution and vice versa**		
