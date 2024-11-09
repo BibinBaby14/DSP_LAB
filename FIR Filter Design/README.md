@@ -1,480 +1,134 @@
-1. FIR Filter General Equation
-The output 
-𝑦
-[
-𝑛
-]
-y[n] of an FIR filter is the convolution of the input signal 
-𝑥
-[
-𝑛
-]
-x[n] and the filter's impulse response 
-ℎ
-[
-𝑛
-]
-h[n]:
+# FIR Filter Design Theory
 
-𝑦
-[
-𝑛
-]
-=
-∑
-𝑘
-=
-0
-𝑀
-−
-1
-ℎ
-[
-𝑘
-]
-⋅
-𝑥
-[
-𝑛
-−
-𝑘
-]
-y[n]= 
-k=0
-∑
-M−1
-​
- h[k]⋅x[n−k]
+## Introduction
+
+Finite Impulse Response (FIR) filters are a fundamental component in digital signal processing due to their stability and linear phase characteristics. The **Window Method** is commonly used to design FIR filters, where the ideal filter's impulse response is multiplied by a window function to control the frequency characteristics. In this document, we discuss the theory behind designing **lowpass**, **highpass**, **bandpass**, and **bandstop** FIR filters using various window functions, including **Rectangular**, **Hanning**, **Hamming**, and **Bartlett**.
+
+---
+
+## 1. FIR Filter General Equation
+
+The output \( y[n] \) of an FIR filter is the convolution of the input signal \( x[n] \) with the filter's impulse response \( h[n] \):
+
+\[
+y[n] = \sum_{k=0}^{M-1} h[k] \cdot x[n-k]
+\]
+
 Where:
+- \( y[n] \) is the output signal.
+- \( x[n] \) is the input signal.
+- \( h[k] \) are the filter coefficients (impulse response).
+- \( M \) is the number of taps (filter order).
 
-ℎ
-[
-𝑘
-]
-h[k] are the filter coefficients.
-𝑥
-[
-𝑛
-]
-x[n] is the input signal.
-𝑀
-M is the number of taps (filter order).
-2. Ideal Impulse Response for Different Filters
-Lowpass Filter:
-The ideal impulse response 
-ℎ
-LP
-[
-𝑛
-]
-h 
-LP
-​
- [n] for a lowpass filter with cutoff frequency 
-𝑓
-𝑐
-f 
-c
-​
-  is given by:
+---
 
-ℎ
-LP
-[
-𝑛
-]
-=
-sin
-⁡
-(
-2
-𝜋
-𝑓
-𝑐
-(
-𝑛
-−
-(
-𝑀
-−
-1
-)
-/
-2
-)
-)
-𝜋
-(
-𝑛
-−
-(
-𝑀
-−
-1
-)
-/
-2
-)
-h 
-LP
-​
- [n]= 
-π(n−(M−1)/2)
-sin(2πf 
-c
-​
- (n−(M−1)/2))
-​
- 
+## 2. Ideal Impulse Response for Different Filters
+
+### Lowpass Filter:
+The ideal impulse response \( h_{\text{LP}}[n] \) for a **lowpass filter** with cutoff frequency \( f_c \) is given by:
+
+\[
+h_{\text{LP}}[n] = \frac{\sin(2\pi f_c (n - (M-1)/2))}{\pi (n - (M-1)/2)}
+\]
+
 Where:
+- \( f_c \) is the normalized cutoff frequency (0 < \( f_c \) < 1).
+- \( M \) is the number of taps.
 
-𝑓
-𝑐
-f 
-c
-​
-  is the normalized cutoff frequency (0 < 
-𝑓
-𝑐
-f 
-c
-​
-  < 1).
-𝑀
-M is the number of taps.
-The formula represents the sinc function, which is the ideal lowpass response.
-Highpass Filter:
-The ideal impulse response 
-ℎ
-HP
-[
-𝑛
-]
-h 
-HP
-​
- [n] for a highpass filter is derived by subtracting the lowpass impulse response from the Dirac delta function 
-𝛿
-[
-𝑛
-]
-δ[n]:
+### Highpass Filter:
+The ideal impulse response \( h_{\text{HP}}[n] \) for a **highpass filter** is derived by subtracting the lowpass impulse response from the Dirac delta function \( \delta[n] \):
 
-ℎ
-HP
-[
-𝑛
-]
-=
-𝛿
-[
-𝑛
-]
-−
-ℎ
-LP
-[
-𝑛
-]
-h 
-HP
-​
- [n]=δ[n]−h 
-LP
-​
- [n]
-Bandpass Filter:
-For a bandpass filter, the ideal impulse response 
-ℎ
-BP
-[
-𝑛
-]
-h 
-BP
-​
- [n] is the difference between the lowpass and highpass responses:
+\[
+h_{\text{HP}}[n] = \delta[n] - h_{\text{LP}}[n]
+\]
 
-ℎ
-BP
-[
-𝑛
-]
-=
-ℎ
-LP
-[
-𝑛
-]
-−
-ℎ
-HP
-[
-𝑛
-]
-h 
-BP
-​
- [n]=h 
-LP
-​
- [n]−h 
-HP
-​
- [n]
-Bandstop Filter:
-The ideal impulse response 
-ℎ
-BS
-[
-𝑛
-]
-h 
-BS
-​
- [n] for a bandstop filter is the sum of the lowpass and highpass responses:
+### Bandpass Filter:
+For a **bandpass filter**, the ideal impulse response \( h_{\text{BP}}[n] \) is the difference between the lowpass and highpass responses:
 
-ℎ
-BS
-[
-𝑛
-]
-=
-ℎ
-LP
-[
-𝑛
-]
-+
-ℎ
-HP
-[
-𝑛
-]
-h 
-BS
-​
- [n]=h 
-LP
-​
- [n]+h 
-HP
-​
- [n]
-3. Window Functions
-A window function 
-𝑤
-[
-𝑛
-]
-w[n] is applied to the ideal impulse response to obtain the final FIR filter coefficients. The different window functions are defined as follows:
+\[
+h_{\text{BP}}[n] = h_{\text{LP}}[n] - h_{\text{HP}}[n]
+\]
 
-Rectangular Window:
-The rectangular window is simply:
+### Bandstop Filter:
+The ideal impulse response \( h_{\text{BS}}[n] \) for a **bandstop filter** is the sum of the lowpass and highpass responses:
 
-𝑤
-[
-𝑛
-]
-=
-1
-for
-0
-≤
-𝑛
-≤
-𝑀
-−
-1
-w[n]=1for0≤n≤M−1
-It results in the simplest filter, but with poor frequency characteristics due to significant side lobes.
+\[
+h_{\text{BS}}[n] = h_{\text{LP}}[n] + h_{\text{HP}}[n]
+\]
 
-Hanning Window:
-The Hanning window is defined as:
+---
 
-𝑤
-[
-𝑛
-]
-=
-0.5
-−
-0.5
-cos
-⁡
-(
-2
-𝜋
-𝑛
-𝑀
-−
-1
-)
-w[n]=0.5−0.5cos( 
-M−1
-2πn
-​
- )
-This window reduces side lobes more effectively than the rectangular window, improving stopband attenuation.
+## 3. Window Functions
 
-Hamming Window:
-The Hamming window is similar to the Hanning window but with a slightly different constant for side lobe attenuation:
+Window functions are used to modify the ideal impulse response to create a realizable FIR filter. The choice of window impacts the filter's frequency response, specifically the trade-off between main lobe width and side lobe attenuation.
 
-𝑤
-[
-𝑛
-]
-=
-0.54
-−
-0.46
-cos
-⁡
-(
-2
-𝜋
-𝑛
-𝑀
-−
-1
-)
-w[n]=0.54−0.46cos( 
-M−1
-2πn
-​
- )
-This provides better side lobe attenuation and is commonly used in practical filter designs.
+### Rectangular Window:
+The **rectangular window** is the simplest, defined as:
 
-Bartlett Window:
-The Bartlett window (or triangular window) is given by:
+\[
+w[n] = 1 \quad \text{for} \quad 0 \leq n \leq M-1
+\]
 
-𝑤
-[
-𝑛
-]
-=
-2
-𝑀
-−
-1
-(
-𝑀
-−
-1
-2
-−
-∣
-𝑛
-−
-(
-𝑀
-−
-1
-)
-/
-2
-∣
-)
-w[n]= 
-M−1
-2
-​
- ( 
-2
-M−1
-​
- −∣n−(M−1)/2∣)
-This is a linear ramp function and provides moderate side lobe attenuation with a wider main lobe.
+This window results in the fastest convergence to the desired filter, but with significant side lobes.
 
-4. FIR Filter Design Process
+### Hanning Window:
+The **Hanning window** is defined as:
+
+\[
+w[n] = 0.5 - 0.5 \cos\left( \frac{2\pi n}{M-1} \right)
+\]
+
+The Hanning window reduces side lobes better than the rectangular window, improving stopband attenuation.
+
+### Hamming Window:
+The **Hamming window** is similar to the Hanning window but with a slightly different constant:
+
+\[
+w[n] = 0.54 - 0.46 \cos\left( \frac{2\pi n}{M-1} \right)
+\]
+
+This provides better side lobe attenuation and is widely used in practical filter designs.
+
+### Bartlett Window:
+The **Bartlett window** (or triangular window) is given by:
+
+\[
+w[n] = \frac{2}{M-1} \left( \frac{M-1}{2} - |n - (M-1)/2| \right)
+\]
+
+It has a triangular shape and offers moderate side lobe attenuation with a wider main lobe.
+
+---
+
+## 4. FIR Filter Design Process
+
 The process of designing an FIR filter using the window method involves the following steps:
 
-Determine the Filter Type: Choose between lowpass, highpass, bandpass, or bandstop depending on your application.
-Calculate the Ideal Impulse Response: Using the appropriate formula for the desired filter type (e.g., sinc function for lowpass).
-Apply the Window Function: Multiply the ideal impulse response 
-ℎ
-ideal
-[
-𝑛
-]
-h 
-ideal
-​
- [n] by the chosen window 
-𝑤
-[
-𝑛
-]
-w[n] to get the final filter coefficients:
-ℎ
-[
-𝑛
-]
-=
-ℎ
-ideal
-[
-𝑛
-]
-⋅
-𝑤
-[
-𝑛
-]
-h[n]=h 
-ideal
-​
- [n]⋅w[n]
-Evaluate the Frequency Response: After applying the window, analyze the frequency response 
-𝐻
-(
-𝑓
-)
-H(f) to verify that it meets the design specifications, such as cutoff frequencies, passband ripple, and stopband attenuation.
-Example Frequency Response:
-The frequency response 
-𝐻
-(
-𝑓
-)
-H(f) of an FIR filter can be computed as the Discrete Fourier Transform (DFT) of the filter's impulse response 
-ℎ
-[
-𝑛
-]
-h[n]:
+1. **Choose the Filter Type**: Decide between lowpass, highpass, bandpass, or bandstop filters based on the application.
+2. **Calculate the Ideal Impulse Response**: Use the appropriate formula for the desired filter type (e.g., sinc function for lowpass).
+3. **Apply the Window Function**: Multiply the ideal impulse response \( h_{\text{ideal}}[n] \) by the chosen window \( w[n] \):
 
-𝐻
-(
-𝑓
-)
-=
-∑
-𝑛
-=
-0
-𝑀
-−
-1
-ℎ
-[
-𝑛
-]
-⋅
-𝑒
-−
-𝑗
-2
-𝜋
-𝑓
-𝑛
-H(f)= 
-n=0
-∑
-M−1
-​
- h[n]⋅e 
-−j2πfn
- 
-This response is then used to check the filter's behavior in both the passband and stopband.
+\[
+h[n] = h_{\text{ideal}}[n] \cdot w[n]
+\]
+
+4. **Evaluate the Frequency Response**: After applying the window, analyze the frequency response \( H(f) \) to ensure it meets the design specifications.
+
+---
+
+## 5. Frequency Response of FIR Filters
+
+The frequency response \( H(f) \) of an FIR filter can be computed as the Discrete Fourier Transform (DFT) of the filter's impulse response \( h[n] \):
+
+\[
+H(f) = \sum_{n=0}^{M-1} h[n] \cdot e^{-j 2\pi f n}
+\]
+
+This frequency response is crucial for verifying that the filter meets the desired performance, such as cutoff frequencies, passband ripple, and stopband attenuation.
+
+---
+
+## Conclusion
+
+The **Window Method** is a straightforward and efficient technique for designing FIR filters. By selecting the appropriate window function and filter type, you can design filters with desirable characteristics. The window function chosen determines the trade-offs between the sharpness of the filter's transition and its ability to suppress unwanted frequencies in the stopband. Understanding these concepts and equations will allow you to design and implement FIR filters that meet specific frequency response requirements.
 
