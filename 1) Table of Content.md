@@ -16,3 +16,7 @@
 **9.Implementation of FIR Filter**	                                                                                                                             
    			
 **10.Familiarization of DSP Hardware**
+
+**11.Generation of Sinewave using DSP KIT**
+
+**12.Linear Convolution using DSP KIT**
