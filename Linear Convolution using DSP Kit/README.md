@@ -6,7 +6,8 @@ Linear convolution is one of the fundamental operations used extensively in sign
 In simple terms, linear convolution is the process of combining two signals or functions to produce a third signal or function. Formally, the linear convolution of two functions f(t) and g(t) is defined as: 
 The formula for linear convolution of two discrete signals x[n] and h[n] is given by: 
 
-                                               𝑦[𝑛] = k=-∞∞x[k].h[n - k] 
+                                               ![image](https://github.com/user-attachments/assets/c4a3f160-20d9-44ac-befa-6c71f0a77d8b)
+
 where: 
 x[n] is the input signal. 
  
