@@ -1,29 +1,31 @@
-## Sine Wave Generation Using TMS320C6748 DSP Development Kit
-## Introduction
-The TMS320C6748 DSP Development Kit is a high-performance platform for real-time digital signal processing (DSP) tasks. One of the basic tasks in signal processing is the generation of sine waves, which are widely used in audio, communication systems, testing, and control applications.
+## Aim:
+ To generate a sine wave using DSP processor
+## Theory:
+Sinusoidal are the most smooth signals with no abrupt variation in their amplitude, the amplitude witnesses gradual change with time. Sinusoidal signals can be defined as a periodic signal with waveform as that of a sine wave. The amplitude of sine wave increase from a value of 0 at 0° angle to a maximum value of 1 at 90° , it further reaches its minimum value of -1 at 270° and then return to 0 at 360° . After any angle greater than 360° , the sinusoidal signal repeats the values so we can say that time period of sinusoidal signal is 2π i.e. 360°.If we observe the graph, we can see that the amplitude varying gradually with a maximum value of 1 and a minimum value of -1. We can also observe that the wave begins to repeat its value after a time period or angle value of 2π hence periodicity of sinusoidal signal is 2π.
+These are sinusoidal signal parameters:
+• Graph: It is a plot used to depict the relation between quantities. Depending upon the number of variables, we can decide to number of axes each perpendicular to the other.
+• Time period: The period for a signal can be defined as the time taken by a periodic signal to complete one cycle.
+• Amplitude: Amplitude can be defined as the maximum distance between the horizontal axis and the vertical position of any signal. 
+• Frequency: This can be defined as the number of times a signal oscillates in one second. It can be mathematically defined as the reciprocal of a period.
+• Phase: It can be defined as the horizontal position of a waveform in one oscillation. The symbol θ is used to indicate the phase. 
+If we consider a sinusoidal signal y(t) having an amplitude A, frequency f, and phase of quantity then we can represent the signal as
+                                           𝑦(𝑡) = 𝐴 𝑠𝑖𝑛(2𝜋𝑓𝑡 + 𝜃)
+ If we denote 2πf as an angular frequency ω the we can re-write the signal as 
+                                            𝑦(𝑡) = 𝐴 𝑠𝑖𝑛(𝜔𝑡 + 𝜃 )
 
-This README provides an overview of how to generate sine waves using the TMS320C6748 DSP.
 
-## Theory
-A sine wave is a periodic waveform with a smooth, continuous oscillation. In a digital system, sine waves are represented by discrete samples calculated at a regular interval, typically at a rate higher than twice the frequency of the wave (the sampling rate), in accordance with the Nyquist theorem.
 
-To generate a sine wave on the TMS320C6748 DSP, the key parameters are:
+## PROCEDURE 
+ 
+1.	Open Code Composer Studio,
+ Click on File -  New – CCS Project 
+ Select the Target – C674X Floating point DSP , TMS320C6748 , and  
+ Connection – Texas Instruments XDS 100v2 USB Debug Probe and Verify.
+ Give  the project name and select Finish. 
+2.	Type the code program for generating the sine wave and choose 
+ File – Save As and then save the program with a name including ‘main.c’. Delete the already existing main.c program.  
+3.	Select Debug and once finished, select the Run option. 
 
-Frequency (f): The frequency of the sine wave in Hertz (Hz).
-Sampling Rate (Fs): The number of samples per second (samples/second). It must be at least twice the frequency of the sine wave to avoid aliasing.
-Amplitude (A): The peak value of the sine wave.
-Phase (φ): The initial phase of the wave (often set to 0 for simplicity).
-The DSP computes the samples of the sine wave by evaluating the sine function at discrete time intervals.
-
-## Sine Wave Generation on TMS320C6748
-The TMS320C6748 DSP Development Kit is equipped with a high-speed processor capable of generating real-time sine wave signals by calculating and outputting discrete samples at a specified frequency and sampling rate. This makes it ideal for applications such as:
-
-Audio signal generation and synthesis.
-Modulation in communication systems.
-Signal testing in laboratory environments.
-Control systems where periodic signals are required.
-The DSP's processing power ensures that sine waves can be generated accurately and efficiently, even for high-frequency or complex waveforms.
-
-## Observation
-![image](https://github.com/user-attachments/assets/233f9d52-1bcb-4a63-9780-79bdf2f03a6a)
-
+4.	From the Tools Bar, select Graphs – Single Time. 
+Select the DSP Data Type as 32-bit Floating point and time display unit as second(s). Change the Start address with the array name used in the program(here,s). 
+5.	Click OK to apply the settings and Run the program or clock Resume in CCS. 
